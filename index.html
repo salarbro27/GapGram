@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>گپ‌گرام</title>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#262626;--mute:#737373;--line:#dbdbdb;--blue:#0095f6;--like:#ed4956;--soft:#efefef;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--ink:#fafafa;--mute:#a8a8a8;--line:#262626;--soft:#262626}}
+:root[data-theme="dark"]{--bg:#000;--ink:#fafafa;--mute:#a8a8a8;--line:#262626;--soft:#262626}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Vazirmatn',Tahoma,sans-serif}
+body{max-width:470px;margin:0 auto;min-height:100vh;padding-bottom:64px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:7}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+svg{display:block}
+#hd{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);height:52px;padding:0 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+#hd h1{margin:0;font-size:18px;font-weight:800}
+.logo{font-family:'Lalezar','Vazirmatn',sans-serif!important;font-weight:400!important;font-size:30px!important;margin:0}
+.hb{display:flex;gap:18px}
+.av{border-radius:50%;display:grid;place-items:center;flex:none;background-size:cover;background-position:center}
+.ring{width:68px;height:68px;padding:3px;border-radius:50%;background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);position:relative;flex:none}
+.ring.seen{background:var(--line)}.ring .av{width:100%!important;height:100%!important;border:3px solid var(--bg)}
+.ring.sm{width:42px;height:42px;padding:2px}.ring.sm .av{border-width:2px}
+.plus{position:absolute;bottom:0;inset-inline-end:0;width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;border:2px solid var(--bg);display:grid;place-items:center;font-size:15px;line-height:1}
+.stories{display:flex;gap:12px;overflow-x:auto;padding:12px 12px 10px;border-bottom:1px solid var(--line)}
+.st{flex:none;text-align:center;font-size:11px;width:70px;color:var(--ink)}.st span{display:block;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.post{margin-bottom:6px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.ph{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.ph b{font-size:13.5px}.ph .t{color:var(--mute);font-size:12px}
+.fol{color:var(--blue);font-weight:600;font-size:13px}.fol.on{color:var(--mute)}
+.ph .sp{margin-inline-start:auto}
+.media{aspect-ratio:1;display:grid;place-items:center;font-size:120px;position:relative;user-select:none;background-size:cover;background-position:center}
+.heart{position:absolute;color:#fff;opacity:0;transform:scale(.4);pointer-events:none;transition:.25s;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+.heart.on{opacity:1;transform:scale(1)}
+.acts{display:flex;gap:16px;padding:10px 12px 4px;align-items:center}
+.acts .sv{margin-inline-start:auto}.liked{color:var(--like)}
+.lk,.cap,.vc,.cm,.tm{padding:0 12px;font-size:13.5px;line-height:1.7}
+.lk{font-weight:600}.vc{color:var(--mute);display:block}.tm{color:var(--mute);font-size:11px;margin:4px 0 6px}
+.cin{display:flex;gap:8px;align-items:center;padding:4px 12px}
+.cin input{flex:1;border:0;background:none;color:var(--ink);font:inherit;font-size:13.5px;padding:6px 0}
+.cin button{color:var(--blue);font-weight:600;font-size:13.5px}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:470px;background:var(--bg);border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));z-index:6}
+nav button{opacity:.55;padding:2px 14px}nav button.on{opacity:1}nav button.on .av{outline:2px solid var(--ink);outline-offset:1px}
+body.auth nav,body.auth #hd{display:none}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}.grid .media{font-size:46px;cursor:pointer}
+.pad{padding:14px}
+.sin{width:100%;border:0;background:var(--soft);color:var(--ink);border-radius:10px;padding:9px 14px;font:inherit;font-size:14px}
+.sbar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:10px 12px;z-index:4}
+.prof{display:flex;gap:22px;align-items:center}
+.nums{display:flex;flex:1;justify-content:space-around;text-align:center;font-size:13px}.nums b{display:block;font-size:17px}
+.nm{margin:10px 0;font-size:14px}.nm p{margin:2px 0;color:var(--ink)}
+.two{display:flex;gap:8px}.two .btn{margin:0}
+.tabs{display:flex;border-top:1px solid var(--line);margin-top:6px}.tabs button{flex:1;padding:10px;opacity:.45;display:grid;place-items:center;border-top:1.5px solid transparent;margin-top:-1px}.tabs .on{opacity:1;border-color:var(--ink)}
+.btn{background:var(--blue);color:#fff;border-radius:9px;padding:9px 16px;font-weight:600;width:100%;margin-top:10px;font-size:14px}
+.btn.sec{background:var(--soft);color:var(--ink)}
+.lnk{color:var(--blue);font-weight:600;font-size:13.5px;display:block;margin:8px auto}.lnk.red{color:var(--like)}
+.empty{text-align:center;color:var(--mute);padding:40px 16px;font-size:14px}
+.sw{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.sw button{width:34px;height:34px;border-radius:50%;border:3px solid transparent}.sw button.on{border-color:var(--ink)}
+.em button{font-size:24px;width:auto;height:auto;border-radius:8px;padding:2px 4px;border:0}.em button.on{background:var(--soft)}
+textarea,.fi{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--ink);font:inherit;font-size:14px;padding:10px;margin-top:8px}
+.authbox{padding:28px 24px;text-align:center}.authbox .logo{font-size:46px!important}.authbox .sub{color:var(--mute);font-size:14px;margin:4px 0 16px}.ctr{display:flex;justify-content:center}
+.fine{color:var(--mute);font-size:11.5px;margin-top:18px;line-height:1.8}
+.row{display:flex;gap:12px;align-items:center;width:100%;padding:10px 14px;text-align:start}
+.row small{display:block;color:var(--mute);font-size:12.5px}.row .on{position:absolute}
+.dot{position:absolute;bottom:0;inset-inline-end:0;width:13px;height:13px;border-radius:50%;background:#31a24c;border:2px solid var(--bg)}
+.msgs{display:flex;flex-direction:column;gap:5px;padding:12px;min-height:55vh}
+.bub{max-width:75%;padding:8px 13px;border-radius:20px;background:var(--soft);font-size:14px;align-self:flex-end;line-height:1.7}
+.bub.me{align-self:flex-start;background:#3797f0;color:#fff}
+.typ i{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:var(--mute);animation:bl 1s infinite}.typ i:nth-child(2){animation-delay:.2s}.typ i:nth-child(3){animation-delay:.4s}
+@keyframes bl{50%{opacity:.25}}
+.send{position:sticky;bottom:60px;background:var(--bg);border:1px solid var(--line);border-radius:24px;margin:8px 12px;padding:4px 14px}
+.dmh{display:flex;gap:10px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:4}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 18px;border-radius:22px;font-size:13px;z-index:20;max-width:90%;text-align:center}
+.modal{position:fixed;inset:0;z-index:15;display:grid;place-items:center;font-size:150px;max-width:470px;margin:0 auto}
+.modal .pbar{position:absolute;top:calc(8px + env(safe-area-inset-top,0px));inset-inline:10px;height:3px;background:rgba(255,255,255,.35);border-radius:2px;overflow:hidden}
+.modal .pbar i{display:block;height:100%;background:#fff;animation:pb 3.5s linear forwards}@keyframes pb{from{width:0}to{width:100%}}
+.modal .sh{position:absolute;top:calc(22px + env(safe-area-inset-top,0px));inset-inline:12px;display:flex;gap:10px;align-items:center;color:#fff;font-size:14px}
+.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}.pl{position:absolute;top:6px;inset-inline-end:6px;color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6))}.heart{z-index:2}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.bd{position:absolute;top:-4px;inset-inline-end:6px;background:var(--like);color:#fff;border-radius:9px;font-size:10px;padding:0 5px;line-height:16px}nav button{position:relative}.ring{display:block}.tabs button{font-size:13.5px;font-weight:600}.row{border:0}
+</style>
+</head>
+<body>
+<header id="hd"></header>
+<main id="app"></main>
+<nav id="nav"></nav>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const SUPABASE_URL='https://rdfkzxtoxdaduyhlnrli.supabase.co',SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkZmt6eHRveGRhZHV5aGxucmxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwMjUzODYsImV4cCI6MjEwNzYwMTM4Nn0.pN6rP3joH6huEguxyHFCTZbLhgGR9EXh3mcjx60__hk';
+const G=['linear-gradient(135deg,#f59e0b,#e11d48)','linear-gradient(135deg,#7c3aed,#06b6d4)','linear-gradient(135deg,#10b981,#84cc16)','linear-gradient(135deg,#ec4899,#8b5cf6)','linear-gradient(135deg,#0ea5e9,#6366f1)','linear-gradient(135deg,#f97316,#facc15)'];
+const I={play:'<path d="M7 4l13 8-13 8z"/>',home:'<path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',plus:'<rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/>',heart:'<path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/>',comment:'<path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-5.4A8 8 0 1 1 21 12z"/>',send:'<path d="M22 3L2 10.5l7.5 3L13 21z"/><path d="M22 3L9.5 13.5"/>',bookmark:'<path d="M6 3h12v18l-6-4.5L6 21z"/>',grid:'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',back:'<path d="M9 6l6 6-6 6"/>',trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>'};
+const ic=(n,f,s)=>`<svg viewBox="0 0 24 24" width="${s||24}" height="${s||24}" fill="${f?'currentColor':'none'}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${I[n]}</svg>`;
+const $=s=>document.querySelector(s),fa=n=>(+n||0).toLocaleString('fa-IR');
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const sb=(/^https?:/.test(SUPABASE_URL)&&window.supabase)?supabase.createClient(SUPABASE_URL,SUPABASE_KEY):null;
+const safe=u=>typeof u==='string'&&(u.startsWith(SUPABASE_URL)||u.startsWith('data:image/'))&&!/['")\s\\]/.test(u)?u:'';
+const gi=u=>[...(u.username||'a')].reduce((a,c)=>a+c.charCodeAt(0),0)%6;
+const avt=(u,s)=>{const a=safe(u.avatar_url);return `<div class="av" style="width:${s}px;height:${s}px;font-size:${s*.45}px;color:#fff;${a?`background-image:url('${a}')`:`background:${G[gi(u)]}`}">${a?'':esc((u.username||'?')[0].toUpperCase())}</div>`};
+const ago=t=>{const s=(Date.now()-new Date(t))/1e3;return s<60?'همین الان':s<3600?fa(Math.floor(s/60))+' دقیقه پیش':s<86400?fa(Math.floor(s/3600))+' ساعت پیش':fa(Math.floor(s/86400))+' روز پیش'};
+function toast(m){const d=document.createElement('div');d.className='toast';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),2400)}
+const POSTSEL='id,caption,image_url,emoji,grad,created_at,user_id';
+let ME=null,VT=0,qt,ch;const P=new Map(),PR=new Map();
+const blank=()=>({kind:'post',cap:'',e:'✨',g:0,blob:null,prev:null,vfile:null,vprev:null});
+let S={tab:'home',prev:'home',pid:null,pu:null,pt:'p',following:new Set(),stories:{},seen:new Set(),chat:null,mode:'in',edit:false,au:{},draft:blank(),unread:0,q:'',exl:[],convHTML:''};
+try{S.seen=new Set(JSON.parse(localStorage.getItem('gg-seen')||'[]'))}catch(e){}
+const isVid=u=>/\.(mp4|webm)$/i.test(u||'');
+const pbg=p=>isVid(p.img)?'background:#000':p.img?`background-image:url('${p.img}')`:`background:${G[(+p.g||0)%6]}`;
+const minner=(p,g)=>isVid(p.img)?(g?`<video src="${p.img}#t=0.1" muted playsinline preload="metadata"></video><span class="pl">${ic('play',1,18)}</span>`:`<video src="${p.img}" controls playsinline preload="metadata" loop></video>`):p.img?'':esc(p.e||'');
+const grid=l=>l.length?`<div class="grid">${l.map(p=>`<div class="media" style="${pbg(p)}" data-open="${p.id}">${minner(p,1)}</div>`).join('')}</div>`:'';
+const urows=(l,a)=>l.length?l.map(u=>{PR.set(u.id,u);return `<button class="row" data-${a}="${u.id}">${avt(u,48)}<div><b dir="ltr">${esc(u.username)}</b><small>${esc(u.full_name||'')}</small></div></button>`}).join(''):'<div class="empty">کاربری پیدا نشد.</div>';
+async function fetchProfiles(ids){const m=[...new Set(ids)].filter(i=>!PR.has(i));if(!m.length)return;const {data,error}=await sb.from('profiles').select('*').in('id',m);if(error)throw error;(data||[]).forEach(p=>PR.set(p.id,p))}
+async function enrich(rows){
+ const ids=rows.map(r=>r.id);if(!ids.length)return [];
+ const [l,v,la,ca]=await Promise.all([sb.from('likes').select('post_id').eq('user_id',ME.id).in('post_id',ids),sb.from('saves').select('post_id').eq('user_id',ME.id).in('post_id',ids),sb.from('likes').select('post_id').in('post_id',ids),sb.from('comments').select('post_id').in('post_id',ids),fetchProfiles(rows.map(r=>r.user_id))]);
+ [l,v,la,ca].forEach(r=>{if(r.error)throw r.error});
+ const L=new Set(l.data.map(x=>x.post_id)),V=new Set(v.data.map(x=>x.post_id)),cnt=d=>{const m={};d.forEach(x=>m[x.post_id]=(m[x.post_id]||0)+1);return m},LC=cnt(la.data),CC=cnt(ca.data);
+ return rows.map(r=>{const old=P.get(r.id),p={id:r.id,u:PR.get(r.user_id),cap:r.caption,img:safe(r.image_url),e:r.emoji,g:r.grad,t:r.created_at,likes:LC[r.id]||0,cmn:CC[r.id]||0,liked:L.has(r.id),saved:V.has(r.id),cm:old?old.cm:null};P.set(p.id,p);return p})}
+function postHTML(p){
+ const me=p.u.id===ME.id,fl=S.following.has(p.u.id);
+ return `<article class="post" data-id="${p.id}"><div class="ph"><button class="ring sm ${S.stories[p.u.id]?'':'seen'}" data-user="${p.u.id}">${avt(p.u,38)}</button><div><button data-user="${p.u.id}"><b dir="ltr">${esc(p.u.username)}</b></button>${me?'':`<button class="fol ${fl?'on':''}" data-fol="${p.u.id}"> • ${fl?'دنبال می‌کنی':'دنبال کن'}</button>`}</div><span class="sp">${me?`<button data-del="${p.id}" aria-label="حذف پست">${ic('trash',0,20)}</button>`:''}</span></div>
+<div class="media" style="${pbg(p)}" data-dbl="${p.id}">${minner(p,0)}<span class="heart" id="h${p.id}">${ic('heart',1,90)}</span></div>
+<div class="acts"><button data-like="${p.id}" class="${p.liked?'liked':''}" aria-label="پسندیدن">${ic('heart',p.liked)}</button><button data-focus="${p.id}" aria-label="نظر">${ic('comment')}</button><button data-share="${p.id}" aria-label="کپی لینک">${ic('send')}</button><button class="sv" data-save="${p.id}" aria-label="ذخیره">${ic('bookmark',p.saved)}</button></div>
+<div class="lk">${fa(p.likes)} پسند</div>${p.cap?`<div class="cap"><b dir="ltr">${esc(p.u.username)}</b> ${esc(p.cap)}</div>`:''}
+${!p.cm&&p.cmn>0?`<button class="vc" data-ex="${p.id}">مشاهده همه ${fa(p.cmn)} نظر</button>`:''}
+<div class="cm">${(p.cm||[]).map(c=>`<div><b dir="ltr">${esc(c.profiles?c.profiles.username:'')}</b> ${esc(c.body)}</div>`).join('')}</div><div class="tm">${ago(p.t)}</div>
+<div class="cin">${avt(ME,26)}<input id="c${p.id}" placeholder="نظر بنویس…" maxlength="300"><button data-cm="${p.id}">ارسال</button></div></article>`}
+function upd(id){const el=document.querySelector(`[data-id="${id}"]`);if(el)el.outerHTML=postHTML(P.get(id))}
+async function loadComments(p){const {data,error}=await sb.from('comments').select('id,body,created_at,user_id').eq('post_id',p.id).order('created_at').limit(200);if(error)throw error;await fetchProfiles((data||[]).map(c=>c.user_id));p.cm=(data||[]).map(c=>({...c,profiles:PR.get(c.user_id)}))}
+async function like(id){const p=P.get(id);p.liked=!p.liked;p.likes+=p.liked?1:-1;upd(id);const r=p.liked?await sb.from('likes').insert({post_id:id,user_id:ME.id}):await sb.from('likes').delete().match({post_id:id,user_id:ME.id});if(r.error){p.liked=!p.liked;p.likes+=p.liked?1:-1;upd(id);toast('خطا، دوباره امتحان کن')}}
+async function saveP(id){const p=P.get(id);p.saved=!p.saved;upd(id);const r=p.saved?await sb.from('saves').insert({post_id:id,user_id:ME.id}):await sb.from('saves').delete().match({post_id:id,user_id:ME.id});if(r.error){p.saved=!p.saved;upd(id);toast('خطا')}else if(p.saved)toast('ذخیره شد')}
+async function addComment(id){const i=$('#c'+id),v=i.value.trim();if(!v)return;const p=P.get(id),{error}=await sb.from('comments').insert({post_id:id,user_id:ME.id,body:v});if(error)return toast('ارسال نشد');p.cmn++;await loadComments(p);upd(id);const n=$('#c'+id);n&&n.focus()}
+async function toggleFollow(uid){const on=S.following.has(uid);on?S.following.delete(uid):S.following.add(uid);const r=on?await sb.from('follows').delete().match({follower:ME.id,followee:uid}):await sb.from('follows').insert({follower:ME.id,followee:uid});if(r.error){on?S.following.add(uid):S.following.delete(uid);toast('خطا، دوباره امتحان کن')}view()}
+async function upload(blob,dir,ext,type){const path=`${ME.id}/${dir}-${Date.now()}.${ext||'jpg'}`,{error}=await sb.storage.from('media').upload(path,blob,{contentType:type||'image/jpeg'});if(error)throw error;return sb.storage.from('media').getPublicUrl(path).data.publicUrl}
+function vidMeta(f){return new Promise((ok,no)=>{const v=document.createElement('video'),u=URL.createObjectURL(f);v.preload='metadata';v.onloadedmetadata=()=>ok({d:v.duration,u});v.onerror=()=>{URL.revokeObjectURL(u);no()};v.src=u})}
+function shrink(f,m,cb){const i=new Image(),u=URL.createObjectURL(f);i.onload=()=>{const k=Math.min(1,m/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(b=>cb(b,c.toDataURL('image/jpeg',.7)),'image/jpeg',.82)};i.onerror=()=>toast('عکس خونده نشد');i.src=u}
+async function loadStories(){const since=new Date(Date.now()-864e5).toISOString(),{data,error}=await sb.from('stories').select('id,user_id,image_url,emoji,grad,created_at').in('user_id',[...S.following,ME.id]).gte('created_at',since).order('created_at');if(error)throw error;await fetchProfiles((data||[]).map(s=>s.user_id));S.stories={};(data||[]).forEach(s=>{(S.stories[s.user_id]=S.stories[s.user_id]||[]).push(s)})}
+const allSeen=i=>S.stories[i].every(s=>S.seen.has(s.id));
+function storiesHTML(){const ids=Object.keys(S.stories).filter(i=>i!==ME.id).sort((a,b)=>allSeen(a)-allSeen(b)),mine=S.stories[ME.id];
+ return `<div class="stories"><button class="st" data-story="${ME.id}"><div class="ring ${mine&&!allSeen(ME.id)?'':'seen'}">${avt(ME,62)}${mine?'':'<span class="plus">+</span>'}</div><span>داستان شما</span></button>${ids.map(i=>`<button class="st" data-story="${i}"><div class="ring ${allSeen(i)?'seen':''}">${avt(PR.get(i),62)}</div><span dir="ltr">${esc(PR.get(i).username)}</span></button>`).join('')}</div>`}
+function playStory(uid){const l=S.stories[uid];if(!l||!l.length){if(uid===ME.id){S.draft.kind='story';go('new')}return}
+ let i=Math.max(0,l.findIndex(s=>!S.seen.has(s.id))),tm;const m=document.createElement('div');m.className='modal';document.body.appendChild(m);
+ const close=()=>{clearTimeout(tm);m.remove();try{localStorage.setItem('gg-seen',JSON.stringify([...S.seen].slice(-500)))}catch(e){}const el=$('.stories');if(el&&S.tab==='home')el.outerHTML=storiesHTML()};
+ const show=()=>{const s=l[i];if(!s)return close();S.seen.add(s.id);const u=PR.get(uid),img=safe(s.image_url);m.style.cssText=img?`background:#000 url('${img}') center/contain no-repeat`:`background:${G[(+s.grad||0)%6]}`;m.innerHTML=`<div class="pbar"><i></i></div><div class="sh">${avt(u,34)}<b dir="ltr">${esc(u.username)}</b><small>${ago(s.created_at)}</small></div>${img?'':`<span>${esc(s.emoji||'')}</span>`}`;clearTimeout(tm);tm=setTimeout(()=>{i++;show()},4000)};
+ m.onclick=()=>{i++;show()};show()}
+const setupHTML=`<div class="authbox"><h1 class="logo">گپ‌گرام</h1><p class="sub">قبل از اجرا باید اپ رو به Supabase وصل کنی.</p><p class="fine" style="text-align:start">۱) توی supabase.com یه پروژه بساز.<br>۲) محتوای فایل schema.sql رو توی SQL Editor اجرا کن.<br>۳) مقدار SUPABASE_URL و SUPABASE_KEY (کلید anon public) رو بالای اسکریپت همین فایل بذار.</p></div>`;
+function authView(){const m=S.mode==='up';$('#hd').style.display='none';
+ $('#app').innerHTML=`<div class="authbox"><h1 class="logo">گپ‌گرام</h1><p class="sub">${m?'ثبت‌نام کن و عکس‌ها و پیام‌های دوستانت رو ببین.':'وارد حسابت شو.'}</p>
+${m?`<input class="fi" id="a_un" dir="ltr" placeholder="نام کاربری (انگلیسی)" maxlength="20" autocapitalize="none" autocomplete="username"><input class="fi" id="a_n" placeholder="نام کامل" maxlength="30">`:''}
+<input class="fi" id="a_e" dir="ltr" type="email" placeholder="ایمیل" autocomplete="email"><input class="fi" id="a_p" dir="ltr" type="password" placeholder="رمز عبور (حداقل ۶ کاراکتر)" autocomplete="${m?'new-password':'current-password'}">
+<button class="btn" id="go">${m?'ثبت‌نام':'ورود'}</button><button class="lnk" id="sw">${m?'حساب داری؟ وارد شو':'حساب نداری؟ ثبت‌نام کن'}</button></div>`}
+async function doAuth(){const g=i=>($(i)||{}).value||'',e=g('#a_e').trim(),p=g('#a_p');
+ if(!e||p.length<6)return toast('ایمیل و رمز (حداقل ۶ کاراکتر) رو وارد کن');
+ const b=$('#go');b.disabled=true;
+ try{if(S.mode==='up'){const un=g('#a_un').trim().toLowerCase(),n=g('#a_n').trim();
+  if(!/^[a-z0-9._]{3,20}$/.test(un))return toast('نام کاربری باید ۳ تا ۲۰ حرف انگلیسی، عدد، نقطه یا _ باشه');
+  if(!n)return toast('نام کامل رو وارد کن');
+  const {data:ex}=await sb.from('profiles').select('id').eq('username',un).maybeSingle();if(ex)return toast('این نام کاربری گرفته شده');
+  const {data,error}=await sb.auth.signUp({email:e,password:p,options:{data:{username:un,full_name:n}}});
+  if(error)return toast('ثبت‌نام انجام نشد: '+error.message);
+  if(!data.session)toast('ایمیل تأیید برات ارسال شد. بعد از تأیید وارد شو.')}
+ else{const {error}=await sb.auth.signInWithPassword({email:e,password:p});if(error)toast('ایمیل یا رمز اشتباهه')}}
+ finally{b.disabled=false}}
+async function boot(u){if(ME&&ME.id===u.id)return;const {data}=await sb.from('profiles').select('*').eq('id',u.id).single();if(!data)return toast('پروفایل پیدا نشد');
+ ME=data;PR.set(ME.id,ME);const f=await sb.from('follows').select('followee').eq('follower',ME.id);S.following=new Set((f.data||[]).map(x=>x.followee));subscribeDM();
+ const h=location.hash.match(/^#p(\d+)$/);if(h){S.tab='post';S.pid=+h[1]}view()}
+function subscribeDM(){if(ch)sb.removeChannel(ch);ch=sb.channel('dm-'+ME.id).on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:'receiver=eq.'+ME.id},p=>{const m=p.new;if(S.tab==='dm'&&S.chat===m.sender)addBub(m);else{S.unread++;nav();if(S.tab==='dm'&&!S.chat)view();else toast('پیام جدید')}}).subscribe()}
+function hd(){const h=$('#hd'),t=S.tab;if(t==='explore'||(t==='dm'&&S.chat)){h.style.display='none';return}h.style.display='';
+ if(t==='home')h.innerHTML=`<h1 class="logo">گپ‌گرام</h1><div class="hb"><button data-tab="dm" aria-label="پیام‌ها">${ic('send')}</button></div>`;
+ else if(t==='user'||t==='post')h.innerHTML=`<button data-back="1" aria-label="بازگشت">${ic('back')}</button><h1>${t==='post'?'پست':`<span dir="ltr">${esc((PR.get(S.pu)||{}).username||'')}</span>`}</h1><span style="width:24px"></span>`;
+ else h.innerHTML=`<h1>${t==='new'?'پست جدید':t==='dm'?'پیام‌ها':`<span dir="ltr">${esc(ME.username)}</span>`}</h1>`}
+function nav(){const N={home:'خانه',explore:'جستجو',new:'پست جدید',dm:'پیام‌ها'},t=S.tab;
+ $('#nav').innerHTML=[['home','home'],['explore','search'],['new','plus'],['dm','send']].map(([k,i])=>`<button class="${t===k?'on':''}" data-tab="${k}" aria-label="${N[k]}">${ic(i,t===k&&k==='home')}${k==='dm'&&S.unread?`<span class="bd">${fa(S.unread)}</span>`:''}</button>`).join('')+`<button class="${t==='me'?'on':''}" data-tab="me" aria-label="پروفایل">${avt(ME,26)}</button>`}
+function go(t,o){if(!['user','post'].includes(S.tab))S.prev=S.tab;Object.assign(S,{tab:t,chat:null},o||{});view();scrollTo(0,0)}
+async function homeView(tk){let q=sb.from('posts').select(POSTSEL).order('created_at',{ascending:false}).limit(40);if(S.following.size)q=q.in('user_id',[...S.following,ME.id]);
+ const [r]=await Promise.all([q,loadStories()]);if(r.error)throw r.error;const ps=await enrich(r.data||[]);if(tk!==VT)return;
+ $('#app').innerHTML=storiesHTML()+(ps.length?ps.map(postHTML).join(''):'<div class="empty">هنوز پستی نیست. از جستجو آدم‌ها رو پیدا کن و دنبالشون کن، یا اولین پستت رو بذار.</div>')}
+async function exploreView(tk){const r=await sb.from('posts').select(POSTSEL).order('created_at',{ascending:false}).limit(60);if(r.error)throw r.error;const ps=await enrich(r.data||[]);if(tk!==VT)return;S.exl=ps;
+ $('#app').innerHTML=`<div class="sbar"><input id="q" class="sin" placeholder="جستجوی کاربر" value="${esc(S.q)}"></div><div id="gr">${S.q?'':(grid(ps)||'<div class="empty">هنوز پستی نیست.</div>')}</div>`;if(S.q)searchUsers(S.q,$('#gr'),'user',()=>grid(S.exl))}
+async function searchUsers(q,box,act,fb){const t=q.replace(/[%,()*\\]/g,'').slice(0,30);if(!t){box.innerHTML=fb();return}
+ const {data}=await sb.from('profiles').select('*').or(`username.ilike.%${t}%,full_name.ilike.%${t}%`).neq('id',ME.id).limit(20);const cur=($('#q')||$('#dq')||{}).value;if(cur&&cur.trim()!==q)return;box.innerHTML=urows(data||[],act)}
+async function profileView(tk){const id=S.tab==='me'?ME.id:S.pu,me=id===ME.id,sv=me&&S.pt==='s';
+ const lst=async()=>{if(!sv){const r=await sb.from('posts').select(POSTSEL).eq('user_id',id).order('created_at',{ascending:false}).limit(60);if(r.error)throw r.error;return r.data||[]}
+  const q=await sb.from('saves').select('post_id').eq('user_id',ME.id).order('created_at',{ascending:false}).limit(60);if(q.error)throw q.error;const ids=(q.data||[]).map(x=>x.post_id);if(!ids.length)return [];
+  const r=await sb.from('posts').select(POSTSEL).in('id',ids);if(r.error)throw r.error;const o=new Map((r.data||[]).map(p=>[p.id,p]));return ids.map(i=>o.get(i)).filter(Boolean)};
+ const hc=(c,v)=>sb.from('follows').select('*',{count:'exact',head:true}).eq(c,v);
+ const [a,b,c,d,f]=await Promise.all([sb.from('profiles').select('*').eq('id',id).maybeSingle(),
+  lst(),
+  hc('followee',id),hc('follower',id),sb.from('posts').select('*',{count:'exact',head:true}).eq('user_id',id)]);
+ const u=a.data;if(!u)throw new Error('کاربر پیدا نشد');PR.set(u.id,u);
+ const ps=await enrich(b);if(tk!==VT)return;hd();const fl=S.following.has(id);
+ $('#app').innerHTML=`<div class="pad"><div class="prof">${avt(u,86)}<div class="nums"><div><b>${fa(f.count)}</b>پست</div><div><b>${fa(c.count)}</b>دنبال‌کننده</div><div><b>${fa(d.count)}</b>دنبال‌شونده</div></div></div>
+<div class="nm"><b>${esc(u.full_name)}</b><p>${esc(u.bio)}</p></div><div class="two">${me?`<button class="btn sec" data-edit="1">ویرایش پروفایل</button><button class="btn sec" id="theme">تغییر تم</button>`:`<button class="btn ${fl?'sec':''}" data-fol="${id}">${fl?'دنبال می‌کنی':'دنبال کن'}</button><button class="btn sec" data-chat="${id}">پیام</button>`}</div></div>
+${me?`<div class="tabs"><button class="${sv?'':'on'}" data-pt="p" aria-label="پست‌ها">${ic('grid')}</button><button class="${sv?'on':''}" data-pt="s" aria-label="ذخیره‌شده‌ها">${ic('bookmark')}</button></div>`:''}
+${grid(ps)||`<div class="empty">${sv?'پست‌های ذخیره‌شده اینجا نشون داده می‌شن.':'هنوز پستی نیست.'}</div>`}${me?'<div class="pad"><button class="lnk red" id="logout">خروج از حساب</button></div>':''}`}
+async function postView(tk){let p=P.get(S.pid);if(!p){const {data}=await sb.from('posts').select(POSTSEL).eq('id',S.pid).maybeSingle();if(!data)throw new Error('پست پیدا نشد');p=(await enrich([data]))[0]}if(!p.cm)await loadComments(p);if(tk!==VT)return;hd();$('#app').innerHTML=postHTML(p)}
+const bub=m=>`<div class="bub ${m.sender===ME.id?'me':''}">${esc(m.body)}</div>`;
+async function dmView(tk){if(S.chat)return threadView(tk);
+ const {data}=await sb.from('messages').select('*').or(`sender.eq.${ME.id},receiver.eq.${ME.id}`).order('created_at',{ascending:false}).limit(300);
+ const conv=new Map();(data||[]).forEach(m=>{const o=m.sender===ME.id?m.receiver:m.sender;if(!conv.has(o))conv.set(o,m)});
+ const miss=[...conv.keys()].filter(i=>!PR.has(i));if(miss.length){const {data:ps}=await sb.from('profiles').select('*').in('id',miss);(ps||[]).forEach(p=>PR.set(p.id,p))}
+ if(tk!==VT)return;S.unread=0;nav();
+ S.convHTML=conv.size?[...conv].map(([o,m])=>`<button class="row" data-chat="${o}">${avt(PR.get(o),52)}<div><b dir="ltr">${esc(PR.get(o).username)}</b><small>${m.sender===ME.id?'شما: ':''}${esc(m.body.slice(0,40))}</small></div></button>`).join(''):'<div class="empty">هنوز گفتگویی نداری. بالا دنبال یه کاربر بگرد و پیام بده.</div>';
+ $('#app').innerHTML=`<div class="sbar" style="top:calc(52px + env(safe-area-inset-top,0px))"><input id="dq" class="sin" placeholder="جستجوی کاربر برای پیام دادن"></div><div id="dl">${S.convHTML}</div>`}
+async function threadView(tk){const o=S.chat;
+ const {data}=await sb.from('messages').select('*').or(`and(sender.eq.${ME.id},receiver.eq.${o}),and(sender.eq.${o},receiver.eq.${ME.id})`).order('created_at').limit(200);
+ if(!PR.has(o)){const r=await sb.from('profiles').select('*').eq('id',o).single();if(r.data)PR.set(o,r.data)}if(tk!==VT)return;const u=PR.get(o);if(!u)throw new Error('کاربر پیدا نشد');
+ $('#app').innerHTML=`<div class="dmh"><button data-back="1" aria-label="بازگشت">${ic('back')}</button><button data-user="${o}" style="display:flex;gap:10px;align-items:center">${avt(u,34)}<div style="text-align:start"><b>${esc(u.full_name||u.username)}</b><small dir="ltr" style="display:block;color:var(--mute);font-size:11px">${esc(u.username)}</small></div></button></div><div class="msgs" id="ms">${(data||[]).map(bub).join('')||'<div class="empty">سلام بده! 👋</div>'}</div><div class="cin send"><input id="mi" placeholder="پیام…" maxlength="1000" autocomplete="off"><button id="send">ارسال</button></div>`;
+ setTimeout(()=>scrollTo(0,document.body.scrollHeight),0)}
+function addBub(m){const b=$('#ms');if(!b)return;const e=b.querySelector('.empty');e&&e.remove();b.insertAdjacentHTML('beforeend',bub(m));scrollTo(0,document.body.scrollHeight)}
+async function sendMsg(){const i=$('#mi'),v=i.value.trim();if(!v)return;i.value='';const {data,error}=await sb.from('messages').insert({sender:ME.id,receiver:S.chat,body:v}).select().single();if(error){i.value=v;return toast('ارسال نشد')}addBub(data)}
+function newView(){const d=S.draft,st=d.kind==='story';hd();
+ $('#app').innerHTML=`<div class="tabs"><button class="${st?'':'on'}" data-kind="post">پست</button><button class="${st?'on':''}" data-kind="story">استوری (۲۴ ساعت)</button></div><div class="pad"><div class="media" style="${d.vprev?'background:#000':d.prev?`background-image:url('${d.prev}')`:`background:${G[d.g]}`};border-radius:6px;font-size:90px">${d.vprev?`<video src="${d.vprev}" controls muted playsinline></video>`:d.prev?'':esc(d.e)}</div>
+<div class="sw">${G.map((g,i)=>`<button style="background:${g}" class="${i===d.g&&!d.prev?'on':''}" data-g="${i}" aria-label="رنگ ${i+1}"></button>`).join('')}</div>
+<div class="sw em">${['✨','🌅','☕','🎉','🐱','🍕','🚀','💜'].map(e=>`<button class="${e===d.e&&!d.prev?'on':''}" data-e="${e}">${e}</button>`).join('')}</div>
+${st?'':`<textarea id="cap" rows="3" placeholder="یه توضیح بنویس…" maxlength="2200">${esc(d.cap)}</textarea>`}
+<input type="file" id="file" accept="image/*,video/mp4,video/webm" hidden><button class="btn sec" id="pick">${st?'انتخاب عکس از گالری':'انتخاب عکس یا ویدیو از گالری'}</button><button class="btn" id="pub">اشتراک‌گذاری</button></div>`}
+async function publish(){const d=S.draft,c=$('#cap');d.cap=c?c.value.trim():'';if(d.kind==='post'&&!d.cap&&!d.blob&&!d.vfile)return toast('یه توضیح یا عکس اضافه کن');
+ const b=$('#pub');b.disabled=true;
+ try{const url=d.vfile?await upload(d.vfile,'video',d.vfile.type==='video/webm'?'webm':'mp4',d.vfile.type):d.blob?await upload(d.blob,d.kind):null,row={user_id:ME.id,image_url:url,emoji:d.e,grad:d.g};
+  const {error}=d.kind==='story'?await sb.from('stories').insert(row):await sb.from('posts').insert({...row,caption:d.cap});if(error)throw error;
+  S.draft=blank();toast(d.kind==='story'?'استوری منتشر شد':'پست منتشر شد');go('home')}
+ catch(e){toast('انتشار نشد: '+(e.message||e));b.disabled=false}}
+function editView(){const A=S.au;$('#hd').style.display='none';$('#app').innerHTML=`<div class="authbox"><h1 class="logo">گپ‌گرام</h1><p class="sub">ویرایش پروفایل</p><div class="ctr">${avt({username:ME.username,avatar_url:A.prev||ME.avatar_url},96)}</div><input type="file" id="afile" accept="image/*" hidden><button class="lnk" id="apick">تغییر عکس پروفایل</button><input class="fi" id="e_n" placeholder="نام کامل" maxlength="30" value="${esc(A.n)}"><input class="fi" id="e_b" placeholder="بیو" maxlength="150" value="${esc(A.bio)}"><button class="btn" id="savep">ذخیره</button><button class="btn sec" id="cancel">انصراف</button></div>`}
+async function saveProfile(){const A=S.au;A.n=$('#e_n').value.trim();A.bio=$('#e_b').value.trim();if(!A.n)return toast('نام رو وارد کن');
+ try{const url=A.blob?await upload(A.blob,'avatar'):ME.avatar_url,{data,error}=await sb.from('profiles').update({full_name:A.n,bio:A.bio,avatar_url:url}).eq('id',ME.id).select().single();if(error)throw error;ME=data;PR.set(ME.id,ME);S.edit=false;S.tab='me';view();toast('ذخیره شد')}catch(e){toast('ذخیره نشد')}}
+const R={home:homeView,explore:exploreView,dm:dmView,me:profileView,user:profileView,post:postView};
+async function view(){const tk=++VT,a=$('#app');
+ if(!sb){document.body.classList.add('auth');a.innerHTML=setupHTML;return}
+ if(!ME){document.body.classList.add('auth');authView();return}
+ document.body.classList.remove('auth');
+ if(S.edit){editView();return}
+ hd();nav();if(S.tab==='new'){newView();return}
+ if(!(S.tab==='dm'&&S.chat))a.innerHTML='<div class="empty">در حال بارگذاری…</div>';
+ try{await R[S.tab](tk)}catch(e){if(tk===VT)a.innerHTML=`<div class="empty">خطا در بارگذاری: ${esc(e.message||e)}<br><button class="lnk" id="retry">تلاش دوباره</button></div>`}}
+let lt=0;
+const SEL='[data-tab],[data-like],[data-save],[data-cm],[data-focus],[data-ex],[data-share],[data-dbl],[data-g],[data-e],[data-kind],[data-story],[data-open],[data-fol],[data-user],[data-del],[data-chat],[data-back],[data-pt],[data-edit],#pick,#apick,#pub,#send,#theme,#logout,#go,#sw,#savep,#cancel,#retry';
+document.addEventListener('click',e=>{const t=e.target.closest(SEL);if(!t)return;const d=t.dataset,id=t.id;
+ if(d.tab!==undefined)d.tab==='me'?go('me',{pu:ME.id,pt:'p'}):go(d.tab);
+ else if(d.like)like(+d.like);
+ else if(d.save)saveP(+d.save);
+ else if(d.cm)addComment(+d.cm);
+ else if(d.focus||d.ex){const i=+(d.focus||d.ex),p=P.get(i);(p.cm?Promise.resolve():loadComments(p)).then(()=>{upd(i);if(d.focus){const n=$('#c'+i);n&&n.focus()}})}
+ else if(d.share){const u=location.origin+location.pathname+'#p'+d.share;navigator.clipboard?navigator.clipboard.writeText(u).then(()=>toast('لینک پست کپی شد'),()=>toast('کپی نشد')):toast('کپی نشد')}
+ else if(d.dbl){const n=Date.now();if(n-lt<320){const i=+d.dbl,p=P.get(i);if(!p.liked)like(i);const h=$('#h'+i);if(h){h.classList.add('on');setTimeout(()=>h.classList.remove('on'),700)}}lt=n}
+ else if(d.g!==undefined){const c=$('#cap');c&&(S.draft.cap=c.value);S.draft.g=+d.g;Object.assign(S.draft,{blob:null,prev:null,vfile:null,vprev:null});newView()}
+ else if(d.e){const c=$('#cap');c&&(S.draft.cap=c.value);S.draft.e=d.e;Object.assign(S.draft,{blob:null,prev:null,vfile:null,vprev:null});newView()}
+ else if(d.kind){const c=$('#cap');c&&(S.draft.cap=c.value);S.draft.kind=d.kind;if(d.kind==='story'){S.draft.vfile=S.draft.vprev=null}newView()}
+ else if(d.story)playStory(d.story);
+ else if(d.open)go('post',{pid:+d.open,pu:null});
+ else if(d.fol)toggleFollow(d.fol);
+ else if(d.user)d.user===ME.id?go('me',{pu:ME.id,pt:'p'}):go('user',{pu:d.user,pt:'p'});
+ else if(d.del){sb.from('posts').delete().eq('id',+d.del).then(r=>{if(r.error)return toast('حذف نشد');P.delete(+d.del);toast('پست حذف شد');if(S.tab==='post')go(S.prev||'home');else view()})}
+ else if(d.chat){if(/^[0-9a-f-]{36}$/.test(d.chat))go('dm',{chat:d.chat})}
+ else if(d.back)go(S.prev||'home');
+ else if(d.pt){S.pt=d.pt;view()}
+ else if(d.edit){S.au={n:ME.full_name,bio:ME.bio||'',blob:null,prev:null};S.edit=true;view()}
+ else if(id==='apick')$('#afile').click();
+ else if(id==='pick')$('#file').click();
+ else if(id==='pub')publish();
+ else if(id==='send')sendMsg();
+ else if(id==='theme'){const r=document.documentElement,dk=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=dk?'light':'dark'}
+ else if(id==='go')doAuth();
+ else if(id==='sw'){S.mode=S.mode==='up'?'in':'up';authView()}
+ else if(id==='savep')saveProfile();
+ else if(id==='cancel'){S.edit=false;view()}
+ else if(id==='retry')view();
+ else if(id==='logout')sb.auth.signOut();
+});
+document.addEventListener('input',e=>{const i=e.target;
+ if(i.id==='q'){S.q=i.value.trim();clearTimeout(qt);const v=S.q;qt=setTimeout(()=>searchUsers(v,$('#gr'),'user',()=>grid(S.exl)),250)}
+ else if(i.id==='dq'){clearTimeout(qt);const v=i.value.trim();qt=setTimeout(()=>searchUsers(v,$('#dl'),'chat',()=>S.convHTML),250)}});
+document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const t=e.target;
+ if(t.matches('.cin input'))t.nextElementSibling.click();else if(t.matches('.authbox input')){const g=$('#go')||$('#savep');g&&g.click()}});
+document.addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;
+ if(e.target.id==='file'){const c=$('#cap');c&&(S.draft.cap=c.value);
+  if(f.type.startsWith('video/')){
+   if(S.draft.kind==='story')return toast('ویدیو فقط برای پست قابل انتشاره');
+   if(!['video/mp4','video/webm'].includes(f.type))return toast('فقط ویدیوی MP4 یا WebM پشتیبانی می‌شه');
+   if(f.size>30*1048576)return toast('حجم ویدیو باید کمتر از ۳۰ مگابایت باشه');
+   vidMeta(f).then(m=>{if(m.d>90){URL.revokeObjectURL(m.u);return toast('ویدیو باید کوتاه‌تر از ۹۰ ثانیه باشه')}Object.assign(S.draft,{vfile:f,vprev:m.u,blob:null,prev:null});newView()},()=>toast('ویدیو خونده نشد'))}
+  else shrink(f,1080,(b,p)=>{Object.assign(S.draft,{blob:b,prev:p,vfile:null,vprev:null});newView()})}
+ else if(e.target.id==='afile'){S.au.n=$('#e_n').value;S.au.bio=$('#e_b').value;shrink(f,320,(b,p)=>{S.au.blob=b;S.au.prev=p;editView()})}});
+if(!sb)view();else{
+ sb.auth.onAuthStateChange((ev,s)=>{setTimeout(()=>{if(s&&s.user)boot(s.user);else if(ME){ME=null;S.following=new Set();S.tab='home';view()}},0)});
+ sb.auth.getSession().then(({data})=>{if(!data.session)view()});
+}
+</script>
+</body>
+</html>
